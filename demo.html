@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<link href="http://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style type="text/css">
+		.jumbotron{
+			margin-top: 20px;
+		}
+		
+	</style>
+</head>
+<body>
+<div class="container">
+	<div class="jumbotron">
+    <h1>欢迎使用一个简单的省市区插件</h1>
+    <p>author:hmbconfidenct</p>
+    <p>
+    </p>
+  </div>
+	<div class="row">
+	  	<div class="col-md-4">
+	  		<div class="form-group">
+			    <label for="name">选择省份</label>
+			    <select id="province" class="form-control"></select>
+			  </div>
+	  	</div>
+	  	<div class="col-md-4">
+	  		<div class="form-group">
+			    <label for="name">选择城市</label>
+			    <select id="city" class="form-control"></select>
+			  </div>
+	  	</div>
+	  	<div class="col-md-4">
+	  		<div class="form-group">
+			    <label for="name">选择区</label>
+			    <select id="district" class="form-control"></select>
+			  </div>
+	  	</div>
+	</div>
+
+	<br />
+	<div class="btn-group">
+	    
+	    <button type="button" class="btn btn-default" id="getValue">获取值</button>	        
+	    <button type="button" class="btn btn-default" id="resetValue">重置值</button>
+	   
+      </div>
+	</div>
+	
+
+	<br />
+	<br />
+	
+ 
+	
+
+	
+</div>
+<script type="text/javascript" src="./dist/cj-pcd-1.0.1.js"></script>
+	<script type="text/javascript">
+	
+
+		window.onload = function(){
+			var CJPCD1 = new CJPCD("province","city","district");
+        
+
+			//获取地址
+			document.getElementById('getValue').onclick=function(){
+				var value = CJPCD1.getValue();//json对象
+				console.log(value);
+				if(!value){ 
+					console.log("暂时未设置地址");
+					alert("暂时未设置地址");
+					return false;
+				}
+				alert(value.province +"," + value.city + "," + value.district)
+			}
+
+	
+			//重置
+			document.getElementById('resetValue').onclick=function(){
+				CJPCD1.reSet();//重置
+			}
+			
+			
+		}
+	</script>
+</body>
+</html>
